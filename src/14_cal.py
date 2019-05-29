@@ -6,9 +6,7 @@ https://docs.python.org/3.6/library/calendar.html
 Write a program that accepts user input of the form
   `calendar.py month [year]`
 and does the following:
- - If the user doesn't specify any input, your program should 
-   print the calendar for the current month. The 'datetime'
-   module may be helpful for this.
+
  - If the user specifies one argument, assume they passed in a
    month and render the calendar for that month of the current year.
  - If the user specifies two arguments, assume they passed in
@@ -22,3 +20,23 @@ and does the following:
 import sys
 import calendar
 from datetime import datetime
+
+args = sys.argv
+
+print(args)
+
+month = datetime.today().month
+year = datetime.today().day
+
+#  - If the user doesn't specify any input, your program should
+#    print the calendar for the current month. The 'datetime'
+#    module may be helpful for this.
+
+if len(args) == 2:
+    month = int(args[1])
+
+elif len(args) >= 3:
+    month = int(args[1])
+    year = int(args[2])
+
+calendar.TextCalendar().prmonth(year, month)
